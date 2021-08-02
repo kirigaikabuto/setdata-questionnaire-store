@@ -14,7 +14,7 @@ var questionsQueries = []string{
 	`create table if not exists questions(
 		id text,
 		name text,
-		order int,
+		inorder int,
 		fields text,
 		primary key(id)
 	)`,
@@ -46,7 +46,7 @@ func (q *questionsStore) Create(question *Question) (*Question, error) {
 	if err != nil {
 		return nil, err
 	}
-	result, err := q.db.Exec("INSERT INTO questions (id, name, order, fields) VALUES ($1, $2, $3, $4)",
+	result, err := q.db.Exec("INSERT INTO questions (id, name, inorder, fields) VALUES ($1, $2, $3, $4)",
 		question.Id, question.Name, question.Order, string(fields),
 	)
 	if err != nil {
@@ -74,7 +74,7 @@ func (q *questionsStore) Update(question *QuestionUpdate) (*Question, error) {
 	}
 	if question.Order != nil {
 		cnt++
-		parts = append(parts, "order = $"+strconv.Itoa(cnt))
+		parts = append(parts, "inorder = $"+strconv.Itoa(cnt))
 		values = append(values, question.Order)
 	}
 	if question.Fields != nil {
@@ -109,7 +109,7 @@ func (q *questionsStore) Update(question *QuestionUpdate) (*Question, error) {
 func (q *questionsStore) Get(id string) (*Question, error) {
 	question := &Question{}
 	fields := ""
-	err := q.db.QueryRow("select id, name, order, fields "+
+	err := q.db.QueryRow("select id, name, inorder, fields "+
 		"from questions where id = $1 limit 1", id).
 		Scan(&question.Id, &question.Name, &question.Order, &fields)
 	if err == sql.ErrNoRows {
@@ -143,7 +143,7 @@ func (q *questionsStore) Delete(id string) error {
 
 func (q *questionsStore) List() ([]Question, error) {
 	items := []Question{}
-	query := "select id, name, order, fields from questions"
+	query := "select id, name, inorder, fields from questions"
 	rows, err := q.db.Query(query)
 	if err != nil {
 		return nil, err
