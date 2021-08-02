@@ -1,14 +1,17 @@
 package setdata_questionnaire_store
 
+import setdata_common "github.com/kirigaikabuto/setdata-common"
+
 type Question struct {
-	Id     string  `json:"id"`
-	Name   string  `json:"name"`
-	Order  string  `json:"order"`
-	Fields []Field `json:"fields"`
+	Id     string                 `json:"id"`
+	Name   string                 `json:"name"`
+	Order  *int                   `json:"order"`
+	Fields []setdata_common.Field `json:"fields"`
 }
 
-type Field struct {
-	Name        string `json:"name"`
-	Type        string `json:"type"`
-	Placeholder string `json:"placeholder"`
+type QuestionUpdate struct {
+	Id     string                  `json:"id"`
+	Name   *string                 `json:"name"`
+	Order  *int                    `json:"order"`
+	Fields *[]setdata_common.Field `json:"fields"`
 }
