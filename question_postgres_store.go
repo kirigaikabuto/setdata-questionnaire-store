@@ -143,7 +143,7 @@ func (q *questionsStore) Delete(id string) error {
 
 func (q *questionsStore) List() ([]Question, error) {
 	items := []Question{}
-	query := "select id, name, inorder, fields from questions"
+	query := "select id, name, inorder, fields from questions order by inorder"
 	rows, err := q.db.Query(query)
 	if err != nil {
 		return nil, err

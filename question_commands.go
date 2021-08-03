@@ -4,7 +4,7 @@ import setdata_common "github.com/kirigaikabuto/setdata-common"
 
 type CreateQuestionCommand struct {
 	Name   string                 `json:"name"`
-	Order  *int                   `json:"order"`
+	Order  int                   `json:"order"`
 	Fields []setdata_common.Field `json:"fields"`
 }
 
