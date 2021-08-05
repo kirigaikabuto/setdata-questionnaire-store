@@ -150,5 +150,6 @@ func GetTelegramChatIds(accessToken string) []string {
 			}
 		}
 	}
+	fmt.Println(unique)
 	return unique
 }
