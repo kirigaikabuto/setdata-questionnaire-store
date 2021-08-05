@@ -14,4 +14,6 @@ var (
 	ErrQuestionnaireNotFound      = com.NewMiddleError(errors.New("questionnaire not found"), 404, 6)
 	ErrCreateOrderUnknown         = com.NewMiddleError(errors.New("could not create order: unknown error"), 500, 7)
 	ErrOrderNotFound              = com.NewMiddleError(errors.New("order not found"), 404, 8)
+	ErrCreateTelegramUnknown = com.NewMiddleError(errors.New("could not create telegram bot:unknown error"), 500, 9)
+	ErrTelegramNotFound      = com.NewMiddleError(errors.New("telegram not found"), 404, 10)
 )
