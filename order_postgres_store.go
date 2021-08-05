@@ -56,7 +56,7 @@ func (o *ordersStore) Create(order *Order) (*Order, error) {
 	if n <= 0 {
 		return nil, ErrCreateOrderUnknown
 	}
-	return nil, nil
+	return order, nil
 }
 
 func (o *ordersStore) List(questionnaireName string) ([]Order, error) {
