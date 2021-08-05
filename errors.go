@@ -12,4 +12,6 @@ var (
 	ErrQuestionIdProvided         = com.NewMiddleError(errors.New("question id is not provided"), 400, 4)
 	ErrCreateQuestionnaireUnknown = com.NewMiddleError(errors.New("could not create questionnaire: unknown error"), 500, 5)
 	ErrQuestionnaireNotFound      = com.NewMiddleError(errors.New("questionnaire not found"), 404, 6)
+	ErrCreateOrderUnknown         = com.NewMiddleError(errors.New("could not create order: unknown error"), 500, 7)
+	ErrOrderNotFound              = com.NewMiddleError(errors.New("order not found"), 404, 8)
 )
