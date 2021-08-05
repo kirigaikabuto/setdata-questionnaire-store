@@ -26,7 +26,7 @@ func NewOrderPostgresStore(cfg PostgresConfig) (OrderStore, error) {
 	if err != nil {
 		return nil, err
 	}
-	for _, q := range questionnaireQueries {
+	for _, q := range ordersQueries {
 		_, err = db.Exec(q)
 		if err != nil {
 			log.Println(err)
