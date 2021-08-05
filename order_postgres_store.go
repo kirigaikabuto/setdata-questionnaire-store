@@ -81,6 +81,10 @@ func (o *ordersStore) List(questionnaireName string) ([]Order, error) {
 		if err != nil {
 			return nil, err
 		}
+		err = json.Unmarshal([]byte(questionAnswers), &item.QuestionnaireAnswers)
+		if err != nil {
+			return nil, err
+		}
 		items = append(items, item)
 	}
 	return items, nil
